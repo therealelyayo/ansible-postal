@@ -1,5 +1,5 @@
 ---
-  - hosts: postal
+  - hosts: dellawre
     remote_user: root
     become: true
 
