@@ -16,8 +16,8 @@ server_contact: youremail@noreply.test
 
 # Configure your system administrator user accounts
 internal_sys_admins:
-  - username: myawesomeadmin
-    name: Your Name Here
+  - username: elyayo
+    name: elyayo
     state: present
     groups: ['adm','sudo']
     shell: "/bin/bash"
