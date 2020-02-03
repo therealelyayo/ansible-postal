@@ -5,20 +5,20 @@
 
 ### MySQL Database
 mysql_root_username: root
-mysql_root_password: x4Qa4Psgy2grz55ekTcQ2PfhjXzSd
+mysql_root_password: Chidinma@3454
 
 ################################
 # Postal main settings
 ################################
 
 # Web GUI domain (be sure to configure this DNS name to your primary/main IP **before** deployment)
-postal_web_host: mypostalserver.mydomain.test
+postal_web_host: dellawre.careercabinet.com
 
 # This IP address is used for sending email and accessing the Web GUI
-postal_primary_ip_for_web_management: "1.2.3.4"
+postal_primary_ip_for_web_management: "134.255.233.122"
 
 # This IP is used for the Click & Open tracking
-postal_secondary_ip_for_tracking_urls: "5.6.7.8"
+postal_secondary_ip_for_tracking_urls: "92.42.47.92"
 
 ################################
 # Postal Database configuration
@@ -26,10 +26,10 @@ postal_secondary_ip_for_tracking_urls: "5.6.7.8"
 postal_main_db_host: 127.0.0.1
 postal_main_db_name: postal
 postal_main_db_username: postal
-postal_main_db_password: gmtxXXpMCanARgjhhG2g6Rq9JUdbq
+postal_main_db_password: Chidinma@3454
 postal_rabbitmq_host: 127.0.0.1
 postal_rabbitmq_user: postal
-postal_rabbitmq_password: gmtxXXpMCanARgjhhG2g6Rq9JUdbq
+postal_rabbitmq_password: Chidinma@3454
 postal_rabbitmq_vhost: postal
 
 ################################
@@ -40,8 +40,8 @@ postal_dns_mx: "{{ postal_web_host }}"
 postal_dns_smtp_server_hostname: "{{ postal_web_host }}"
 postal_dns_spf_include: spf.mydomain.test
 postal_dns_return_path: "{{ postal_web_host }}"
-postal_dns_route_domain: incoming.mydomain.test
-postal_dns_track_domain: analytics.mydomain.test
+postal_dns_route_domain: incoming.careercabinet.com
+postal_dns_track_domain: analytics.careercabinet.com
 
 ################################
 # Postal System SMTP (used for sending system emails)
