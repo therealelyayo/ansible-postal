@@ -37,44 +37,6 @@ You can self-host this, or go with a cloud provider. Cloud providers will probab
 * **TWO** Static public facing IP addresses (if you plan to use [Click & Open Tracking](https://github.com/atech/postal/wiki/Click-&-Open-Tracking))
 * We've only tested this Ansible deployment with **Ubuntu 18.04**
 
-## Recommended providers
-DISCLAIMER: The links below are affiliate links. This kicks back a few bucks to us for the referral, but does not cost you *anything* extra to you. Affiliate programs do not influence our recommendations in any sort of way either. These are the best recommendations available.
-
-### [Vultr](https://www.vultr.com)
-**Pros**
-* Simple setup with two IP addresses
-* Reliable and affordable
-
-**Cons**
-* [Vultr blocks port 25 by default](https://www.vultr.com/docs/
-what-ports-are-blocked). You need to contact support to have it unblocked
-
-(We already had our stuff unblocked, so the rest of the guide will follow Vultr)
-
-### [Digital Ocean](https://m.do.co/c)
-**Pros**
-* Reliable and affordable
-* Supports second IP address with "floating IP"
-
-**Cons**
-* Digital Ocean uses "Floating IP Addresses" for their secondary IP addresses. This uses some form of NAT (they use Openstack) for floating IPs and can break certain things on some software. No reports with Postal yet, but it has done this for other softwware.
-* You cannot set PTR records (reverse DNS) on Floating IPs. So if you plan to send mail through more than one IP, look for a different provider
-
-### [Linode](https://www.linode.com)
-**Pros**
-* Reliable and affordable
-* Supports second IP address
-
-**Cons**
-* Getting a second IP address might be a little political on why you need it
-
-### AWS. Azure, Google Cloud (We personally never tried it, but pretty sure it will work)
-**Pros**
-* You can do almost anything with these providers
-
-**Cons**
-* It is more expensive
-
 ### No matter who you choose...
 Self hosting email is a major pain in the butt. Some spam filters will block entire blocks of known IP addresses for VPS providers. If you continue on this adventure, sign up for these tools minimally to monitor your sender reputation:
 * https://sendersupport.olc.protection.outlook.com/SNDS/index.aspx
@@ -84,16 +46,6 @@ Self hosting email is a major pain in the butt. Some spam filters will block ent
 For best security, make sure your SSH keys are configured and [added to your Vultr account](https://www.vultr.com/docs/how-do-i-generate-ssh-keys).
 
 ## Deploy an Ubuntu 18.04 server
-You can get a simple Postal server through [Vultr](https://www.vultr.com) for as little as $10/mo.
-
-Be sure to select/configure:
-* Any region that you want
-* Ubuntu 18.04 x64
-* A server with at least 2GB of memory
-* Your SSH key [that you have added to your account](https://www.vultr.com/docs/how-do-i-generate-ssh-keys)
-* A proper DNS name for your server (our example is `mypostalserver.521dimensions.com`)
-
-<img src="./.github/assets/01-Deploy.png" alt="Vultr Deployment">
 
 ## Add your "A record" for your server to your DNS
 Our example is `mypostalserver.521dimensions.com`, so we added an "A record" that points to our IP address that Vultr gave us.
@@ -118,31 +70,22 @@ While having the network configuration open in your browser window, you will wan
 
 <img src="./.github/assets/05-NetworkConfigDetail.png" alt="Config Detail">
 
+
+## add ip address to server
+https://www.thegeekdiary.com/linux-ip-command-examples-to-manage-networking/
+
+
+
+# ip addr show
+ip addr add iphere/20 dev eth0:0
+
 ### Connect via SSH
 Replace `mypostalserver.mydomain.test` with the DNS name that you chose.
 
 ```sh
 ssh root@mypostalserver.mydomain.test
-```
-### Clear your current configuration
-Since we can copy and paste from Vultr, the easiest is to just clear the current configuration. Run these commands on your server.
 
-```sh
-echo "" > /etc/netplan/10-ens3.yaml
-```
-
-### Modify your configuration
-Then copy the configuration to your clipboard from the Vultr site. We can open the (now empty) configuration with `nano`.
-
-```sh
-nano /etc/netplan/10-ens3.yaml
-```
-
-* Press `CMD + V` to paste
-* Press `CTRL + O` (that is an "oh", not a zero) to Save
-* Press `CTRL + X` to exit the `nano` text editor
-
-## Prepare server for Ansible
+### Prepare server for Ansible
 Now that we have the configuration ready we just need to:
 * Update the "apt" package caches on the server
 * Install "python" package on the server for Ansible to run
@@ -153,7 +96,7 @@ Now that we have the configuration ready we just need to:
 You can do this all in one command by copying and running the below command on your server:
 
 ```sh
-apt update && apt install -y python && apt upgrade -y && apt autoremove -y && reboot
+apt-get update && apt-get install -y python && apt-get upgrade -y && apt-get autoremove -y && reboot
 ```
 
 ## Validate both IP addresses are responding to ping requests
