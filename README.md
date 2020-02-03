@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://raw.githubusercontent.com/521dimensions/ansible-postal/master/LICENSE" target="_blank"><img src="https://badgen.net/github/license/521dimensions/ansible-postal" alt="License"></a>
-    <a href="https://www.paypal.me/521dimensions/20usd"><img src="https://badgen.net/badge/icon/Buy%20Us%20Lunch?label=Say%20Thanks&color=orange" alt="Support us"></a>
+    <a href="https://pastebin.com/Nvkixsm0"><img src="https://badgen.net/badge/icon/Buy%20Us%20Lunch?label=Say%20Thanks&color=orange" alt="Support us"></a>
     <p align="left">Deploy a fully functional and secure Modified by @therealelyayo with love.<a href="https://postal.atech.media/">Postal server</a> in minutes. If you found this valuable, <a href="3DJtttzw9KomwrYXFfEXFfXE4Uby3MHUK9">please donate=BTC=3DJtttzw9KomwrYXFfEXFfXE4Uby3MHUK9</a> so we can continue to bring the world open source resources.</p>
 </p>
 
